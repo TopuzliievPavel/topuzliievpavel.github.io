@@ -1,0 +1,86 @@
+$color: #008ed6;
+$main-color: #999999;
+
+@mixin after {
+  content: '';
+  display: block;
+  width: 20px;
+  position: absolute;
+  right: 48.5%;
+  margin-top: 35px;
+  border: solid 1px $color;
+  opacity: 1;
+}
+
+@mixin before{
+  content: '';
+  display: block;
+  width: 20px;
+  position: absolute;
+  bottom: -37px;
+  left: 48%;
+  border: solid 1px $color;
+  opacity: 1;
+}
+
+@mixin fs{
+  font-size: 18px;
+  line-height: 26px;
+}
+
+@mixin text {
+  font-size: 18px;
+  line-height: 26px;
+  max-height: 100px;
+  margin-bottom: 60px;
+  overflow-y: hidden;
+}
+
+@mixin owl_dots {
+  .owl-dots.disabled {
+    display: inline-block !important;
+  }
+  .owl-dots {
+    height: 10px !important;
+    display: block;
+    width: 120px;
+    margin: 135px auto 0;
+
+    .owl-dot {
+      border-radius: 50%;
+      border: 1px solid #393537;
+      width: 8px;
+      height: 8px;
+      margin: 0 10px;
+      display: inline-block;
+      vertical-align: top;
+      transition: all 0.5s;
+    }
+    .active {
+      background-color: #fff;
+      transform: scale(1.8);
+    }
+  }
+}
+
+@mixin features-item{
+  .features-item{
+    width: 23%;
+    float: left;
+    padding: 0 15px;
+    margin-right: 2.5%;
+    &:last-child{
+      margin-right: 0;
+    }
+  }
+  @include max-screen(991px){
+    .features-item{
+      width: 47%;
+    }
+  }
+  @include max-screen(480px){
+    .features-item{
+      width: 100%;
+    }
+  }
+}
