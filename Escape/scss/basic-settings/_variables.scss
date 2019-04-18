@@ -1,0 +1,25 @@
+//color
+$base-text-color: #777;
+$base-color: #fff;
+$heading-color: #222;
+
+// Body styles
+$base-font-BrandonGrotesque: 'BrandonGrotesque', 'Arial', sans-serif;
+$add-font-arial: $base-font-BrandonGrotesque, 'Arial', serif;
+$base-font-weight: 400;
+$base-font-family: $base-font-BrandonGrotesque;
+$base-text-color: #777;
+$base-background-color: $base-color;
+$base-font-size: 18px;
+$base-line-height: 1;
+$base-min-width: 320px;
+
+// Links styles
+$base-link-color: $base-color;
+$base-hover-link: #e84545;
+
+// Buttons styles
+$btn-color: $base-color;
+$btn-background: $base-color;
+$btn-padding: 0;
+$btn-font-size: inherit;

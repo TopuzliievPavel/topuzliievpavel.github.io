@@ -1,0 +1,1122 @@
+// breakpoints for media
+$breakpoints: (
+  'xs-phone': 320px,
+  'phone': 480px,
+  'tablet': 768px,
+  'desktop': 1024px,
+  'widescreen': 1366px
+);
+
+//fonts
+@import 'common-settings/fonts';
+@import 'basic-settings/variables';
+
+@import 'common-settings/include-media';
+@import 'common-settings/normalize';
+@import 'common-settings/icons';
+
+@import 'basic-settings/reset';
+@import 'basic-settings/heading-styles';
+
+body {
+  color: $base-text-color;
+  background: $base-background-color;
+  font: #{$base-font-size}/#{$base-line-height} $base-font-family;
+  min-width: $base-min-width;
+  font-weight: $base-font-weight;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+div, span, h1, h2, h3, h4, h5, h6, p, blockquote, a, img, ol, ul, li {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+}
+
+h2, h3, h4, h5, h6 {
+	text-transform: capitalize;
+}
+
+* {
+	transition: all .5s ease;
+}
+
+// ```````````````````````Animation`````````````````````
+
+@include media (">=tablet") {
+	@keyframes btn {
+		0% {
+			opacity: 0;
+			visibility: hidden;
+		}
+		100% {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+}
+// ```````````````````````Animation`````````````````````
+.heading {
+	font: 300 60px $base-font-BrandonGrotesque;
+  text-transform: capitalize;
+  color: #222;
+  margin-bottom: 45px;
+  line-height: 0.8;
+	 span {
+	 	font-weight: bold;
+	 }
+
+	 @include media ('<desktop') {
+		font: 300 50px $base-font-BrandonGrotesque;
+	}
+
+	 @include media ('<tablet') {
+		font: 300 30px $base-font-BrandonGrotesque;
+	}
+}
+
+.uppercase {
+	text-transform: uppercase;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 970px;
+  padding: 0 15px;
+}
+
+.section-wrapp {
+	padding: 100px 0;
+	@include media ('<tablet') {
+			padding: 30px 0 40px;
+	}
+}
+
+#wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~HEADER~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.header {
+	width: 100%;
+	position: absolute;
+	z-index: 9999;
+	top: 0;
+	left: 0;
+}
+
+.header-wrap {
+	padding-top: 44px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+
+	@include media ("<tablet") {
+		padding: 20px 0;
+	}
+
+	.logo {
+		transition: 1s ease-in-out;
+		animation-fill-mode: forwards;
+		animation-duration: 2s;
+		transition-delay: 1s;
+		animation-name: bounceInLeft;
+
+		&:hover {
+			transform: scale(1.1)
+		}
+	}
+
+	.nav {
+		@include media ("<tablet") {
+			top: 50px;
+	    width: 100%;
+	    left: 100%;
+	    position: absolute;
+	    background-color: #211c39;
+	    transition: all 1s ease;
+			.menu-active & {
+				opacity: 0.7;
+				left: 0;
+			}
+		}
+	}
+		
+	ul {
+		font-size: 0;
+		line-height: 0;
+		margin: 0 -15px;
+	}
+
+	.navigation-item {
+		font-size: 18px;
+		line-height: 1;
+		display: inline-block;
+		vertical-align: top;
+		padding: 0 15px;
+		color: $base-color;
+		
+		&.active a:before {
+			height: 2px;
+			width: 100%;
+			opacity: 1;
+			visibility: visible;
+			background-color: $base-hover-link;
+		}
+
+		&.active {
+			color: $base-hover-link;
+		}
+
+		@include media ("<tablet") {
+			display: block;
+			text-align: center;
+			padding: 10px 0;
+		}
+
+			a {
+			color: inherit;
+			transition: all .3s ease-in-out;
+			font-weight: 500;
+			position: relative;
+			
+
+			&:hover {
+				color: $base-hover-link;
+			}
+
+			&:before {
+				content: '';
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				height: 2px;
+				width: 0;
+				opacity: 0;
+				visibility: hidden;
+				transition: ease .7s all;	
+			}
+			
+			&:hover:before {
+				height: 2px;
+				width: 100%;
+				opacity: 1;
+				visibility: visible;
+				background-color: $base-hover-link;
+			}
+		}
+	}
+}
+
+.menu-open {
+	display: none;
+ 
+  &:after,
+  &:before,
+  span {
+  	content: '';
+  	position: absolute;
+  	width: 20px;
+  	height: 2px;
+  	background-color: #fff;
+  	transform: translateX(-50%);
+  	left: 50%;
+  	top: 14px;
+  	transition: all ease-in-out .3s;
+  }
+	
+	&:before {
+		top: 8px;
+		.menu-active & {
+			top: 14px;
+      transform: translateX(-50%) rotate(45deg);
+		}
+	}
+
+	&:after {
+		top: 20px;
+		.menu-active & {
+			top: 14px;
+      transform: translateX(-50%) rotate(-45deg);
+		}
+	}
+
+	span {
+    .menu-active & {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  @include media ("<tablet") {
+  	display: block;
+  	position: relative;
+	  width: 30px;
+	  height: 30px;
+	  z-index: 4;
+	  border-radius: 5px;
+  }
+}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~visual-bg~~~~~~~~~~~~~~~~~~~~~~~~
+.visual-bg {
+	background-size: cover;
+	background-position: 50% 50%;
+	position: relative;
+	text-align: center;
+
+	* {
+		z-index: 10;
+		position: relative;
+	}
+
+	&:before {
+		content: '';
+		position: absolute;
+		display: block;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0,0,0, .2);
+		z-index: 0;
+	}
+}
+
+.visual-text {
+	padding: 225px 0 125px;
+	font-size: 30px;
+	color: $base-color;
+	animation: zoomInLeft 1s ,6s;
+  animation-fill-mode: both;
+
+	@include media ("<desktop") {
+		padding: 140px 70px;
+	}
+
+	@include media ('<tablet') {
+		padding: 70px 10px;
+		font-size: 20px;
+	}
+
+	@include media ("<phone") {
+		padding: 72px 0 50px;
+		font-size: 15px;
+	}
+
+	p {
+		font-weight: 300;
+		margin-bottom: 24px;
+
+		@include media ("<desktop") {
+			margin-bottom: 20px;
+		}
+
+			@include media ("<tablet") {
+			margin-bottom: 10px;
+		}
+	}
+
+	h1 {
+		font: bold 64px $base-font-BrandonGrotesque;
+		text-transform: uppercase;
+		margin-bottom: 60px;
+
+		@include media ('<desktop') {
+			font-size: 45px;
+			margin-bottom: 30px;
+		}
+
+		@include media ('<tablet') {
+			font-size: 35px;
+			margin-bottom: 15px;
+		}
+
+		@include media ('<phone') {
+			font-size: 25px;
+		}
+	}
+
+	.btn {
+		text-transform: capitalize;
+		font: bold 23px $base-font-BrandonGrotesque;
+		padding: 10px 65px 16px; 
+		border: 3px solid $base-color;
+		border-radius: 4px;
+		transition: all .3s ease-in-out;
+		display: inline-block;
+		vertical-align: top;
+		color: inherit;
+		opacity: 0;
+		visibility: hidden;
+		animation-name: btn;
+		animation-duration: 2s;
+		animation-delay: 1s;
+		animation-fill-mode: forwards;
+
+		transition-property: transform;
+		transition-duration: 1s;
+
+		@include media (">=tablet") {
+			&:hover {
+				color: $base-hover-link;
+				border-color: $base-hover-link;
+				transform: rotateY(360deg);
+			}
+		}		
+		
+		@include media ('<desktop') {
+			font-size: 18px;
+			padding: 15px 40px;
+		}
+
+		@include media ('<tablet') {
+			font-size: 16px;
+			padding: 10px 30px;
+		}
+
+		@include media ('<phone') {
+			font-size: 14px;
+			padding: 8px 25px;
+		}
+	}
+}
+
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~services~~~~~~~~~~~~~~~~~~~~~~~~
+.services {
+	.services-holder {
+	padding: 100px 40px 80px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	flex-direction: row;
+	align-items: center;
+
+	@include media ('<desktop') {
+		padding: 60px 20px;
+	}
+
+	@include media ('<tablet') {
+		padding: 40px 10px;
+		flex-direction: column;
+	}
+
+	&:nth-child(even) {
+		background: #fafafa;
+		flex-direction: row-reverse;
+
+		.descr-services {
+			max-width: 536px;
+
+			@include media ('<tablet') {
+				max-width: 100%;
+				}
+			
+			h2 {
+				line-height: 1.3;
+				margin-bottom: 30px;
+				animation-name: bounceInRight;
+			}
+
+			p {
+			margin-bottom: 14px;
+
+			@include media ('<desktop') {
+				max-width: 395px;
+			}
+
+			@include media ('<tablet') {
+				max-width: 100%;
+				}
+			}
+		}
+
+		@include media ('<desktop') {
+			padding: 60px 20px;
+		}
+
+		@include media ('<tablet') {
+			padding: 40px 10px;
+			flex-direction: column;
+		}
+
+	}
+
+	.descr-services {
+		max-width: 565px;
+		line-height: 1.4;
+		font-size: 17px;
+
+		@include media ('<desktop') {
+			max-width: 450px;
+		}
+
+		@include media ('<tablet') {
+			margin-bottom: 20px;
+			max-width: 100%;
+		}
+
+		h2 {
+			@extend .heading;
+			word-spacing: -5px;
+			letter-spacing: -1px;
+			animation-duration: 2s;
+			animation-delay: 0.5s;
+
+			@include media ("<tablet") {
+				text-align: center;
+				margin-bottom: 20px;
+			}
+		}
+
+		p {
+			margin-bottom: 36px;
+
+			@include media ("<tablet") {
+				text-align: justify;
+			}
+
+			+ p {
+			margin-bottom: 0;
+			}
+		}
+	}
+	.images-holder {
+			max-width: 300px;
+			margin-right: 10px;
+		}
+	}
+}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~services-info~~~~~~~~~~~~~~~~~~~~~~~~
+.services-info {
+		
+	.box-wrapp {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		flex-direction: row;
+		padding: 80px 40px 62px;
+
+		@include media ("<tablet") {
+			padding: 20px 0;
+		}
+
+		.info-box {
+			width: 50%;
+			margin-bottom: 50px;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+
+			&:nth-child(even) {
+				padding-left: 53px;
+
+				@include media ('<desktop') {
+					padding: 0;
+				}
+			}
+
+			@include media ('<desktop') {
+				width: 50%;
+		    margin-bottom: 30px;
+		    text-align: center;
+			}
+
+			@include media ('<tablet') {
+				width: 100%;
+	    	text-align: center;
+			}
+		}
+
+		.info-icon {
+			width: 71px;
+			height: 71px;
+			background-color: #222;
+			border-radius: 50%;
+			justify-content: center;
+			display: flex;
+			align-items: center;
+			cursor: pointer;
+			transition: all .3s ease-in-out;
+
+
+			@include media ('<desktop') {
+				margin: 0 auto;
+			}
+
+			@include media ('<tablet') {
+				margin-bottom: 10px;
+			}
+
+			@include media (">=tablet") {
+				&:hover {
+					background-color: $base-hover-link;
+					transform: rotate(15deg);
+				}
+			}
+
+				i {
+					&:before {
+					font-size: 38px;
+					color: $base-color;
+				}
+			}
+		}
+
+		.box-content {
+			display: inline-block;
+			vertical-align: top;
+			max-width: 285px;
+			margin-left: 20px;
+			line-height: 1.2;
+			font-size: 17px;
+
+			@include media ('<desktop') {
+				margin: 0 auto;
+			}
+
+			@include media ('<tablet') {
+				max-width: 100%;
+				margin: 0;
+			}
+
+			h4 {
+				font: 500 22px $base-font-BrandonGrotesque;
+				margin-bottom: 5px;
+				letter-spacing: -0.7px;
+			}
+		}	
+	}
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~clients~~~~~~~~~~~~~~~~~~~~~~~~
+.clients {
+	background-color: #fafafa;
+	
+	.clients-wrapp {
+		@extend .section-wrapp;
+		padding: 90px 0;
+
+		@include media ("<tablet") {
+			padding: 0;
+		}
+	}
+
+	.heading-box {
+		margin-bottom: 50px;
+		text-align: center;
+		font: 400 22px $base-font-BrandonGrotesque;
+		color: $base-text-color;
+		letter-spacing: -0.4px;
+			h2 {
+			@extend .heading;
+			margin-bottom: 7px;
+   		letter-spacing: -1px;
+		}
+	}
+
+	.clients-holder {
+		display: flex;
+		flex-wrap: wrap;
+		margin-bottom: 40px;
+		flex-direction: row;
+		align-items: center;
+
+		@include media ('<tablet') {
+			display: block;
+		}
+		
+		&:nth-child(odd) {
+			flex-direction: row-reverse;
+		}
+
+		.circle {
+			width: 220px;
+			height: 220px;
+			background-color: #111;
+			border-radius: 50%;
+
+			@include media ('<tablet') {
+				margin: 0 auto;
+				margin-bottom: 20px;
+			}
+		}
+
+		.speach {
+			background-color: #fff;
+	    padding: 40px 80px 45px;
+	    margin-left: 41px;
+	    font-size: 24px;
+	    line-height: 1.4;
+	    border: solid 2px #fff;
+	    position: relative;
+
+			@include media ('<tablet') {
+				margin-left: 0;
+				font-size: 15px;
+				padding: 0;
+			}
+
+			blockquote {
+				max-width: 480px;
+
+				@include media ("<tablet") {
+					max-width: 100%;
+					text-align: center;
+				}
+
+					cite {
+					color: #7690c5;
+					font-size: 20px;
+
+					@include media ('<tablet') {
+						font-size: 15px;
+					}
+				}
+			}	
+		}
+
+		.triangle-1 {
+
+			&:before,
+			&:after {
+				content: '';
+				position: absolute;
+				top: 50%;
+				right: 100%;
+    		margin-right: -10px;
+				transform: translate(-50%, -50%);
+				border-right: 20px solid #fff;
+				border-top: 11px solid transparent;
+				border-bottom: 11px solid transparent;
+
+				@include media ('<tablet') {
+					display: none;
+				}
+			}
+		}
+
+		.triangle-2 {
+			margin-right: 46px;
+			margin-left: 0;
+			padding: 35px 80px 45px;
+			word-spacing: 1px;
+
+			@include media ('<tablet') {
+				margin-right: 0;
+				padding: 0;
+			}
+
+			
+			&:before,
+			:after {
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: 100%;
+    		margin-left: 10px;
+				transform: translate(-50%, -50%);
+				border-left: 20px solid #fff;
+				border-top: 11px solid transparent;
+				border-bottom: 11px solid transparent;
+
+				@include media ('<tablet') {
+					display: none;
+				}
+			}
+		}
+	}
+}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~logos~~~~~~~~~~~~~~~~~~~~~~~~
+.logos-wrapp {
+	padding: 25px 0 52px;
+
+	@include media ('<tablet') {
+		padding: 20px 0;
+	}
+
+	ul {
+		text-align: center;
+	}
+
+	.logos-item {
+		padding: 0 20px;
+		display: inline-block;
+		vertical-align: middle;
+		transition: transform .4s linear;
+
+		@include media ('<tablet') {
+			margin-bottom: 20px;
+		}
+
+		@include media ('<phone') {
+			display: block;
+			margin-bottom: 20px;
+		}
+		@include media (">=tablet") {
+						&:hover {
+						transform: rotateY(360deg);
+					}
+				}
+	}
+
+	a {
+		display: block;
+	}
+}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~team-section~~~~~~~~~~~~~~~~~~~~~~~~
+.team-section {
+	background-color: #111;
+
+	.team-wrapp {
+		padding: 100px 0 97px;
+		
+		@include media ('<tablet') {
+				padding: 30px 0 40px;
+		}
+	}
+
+	.heading-box {
+		text-align: center;
+		font: 400 22px $base-font-BrandonGrotesque;
+		color: $base-text-color;
+
+		h2 {
+		@extend .heading;
+		color: $base-color;
+		margin-bottom: 10px;
+		}
+		p {
+			margin-bottom: 10px;
+		}
+		margin-bottom: 72px;
+	}
+
+	.wrapp-team-holder {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: row;
+		justify-content: center;
+	}
+
+	.team-holder {
+		padding: 0 25px;
+		max-width: 280px;
+		display: inline-block;
+		vertical-align: top;
+		min-height: 50px;
+		text-align: center;
+		color: $base-color;
+		margin-bottom: 36px;
+
+		@include media ('<tablet') {
+			width: 50%;
+		}
+
+		@include media ('<phone') {
+			width: 100%;
+		}
+
+		.title-team {
+			font-weight: 700;
+			line-height: 1.3;
+
+				.proffesion {
+				font-size: 16px;
+				font-weight: 400;
+			}
+		}
+
+		.photo-people {
+			margin: 0 auto;
+			width: 230px;
+			height: 230px;
+			border-radius: 50%;
+			border: solid 7px #fff;
+			margin-bottom: 20px;
+		}
+
+		.team-links {
+			font-size: 0;
+			line-height: 0;
+
+			.team-links-item {
+				font-size: 18px;
+				line-height: 1;
+				display: inline-block;
+				vertical-align: top;
+				padding: 10px 5px;
+			}
+
+			a {
+				display: block;
+			}
+
+			.icon-team {
+				display: block;
+				color: $base-color;
+				font-size: 18px;
+				padding: 9px;
+				border: 2px solid $base-color;
+				border-radius: 50px;
+				transition: ease-in-out .5s all;
+				position: relative;
+
+				@include media ('<tablet') {
+				padding: 6px;
+				font-size: 14px;
+			}
+
+				@include media (">=tablet") {
+						&:hover {
+						transform: rotateY(360deg);
+					}
+				}
+			}
+
+			.icon-pinterest {
+					@include media (">=tablet") {
+						&:hover {
+						border: 2px solid #FF7F50;
+						color: $base-color;
+						background-color: #FF7F50;
+					}
+				}
+			}
+
+			.icon-facebook-logo {
+					@include media (">=tablet") {
+						&:hover {
+						border: 2px solid #FF7F50;
+						color: $base-color;
+						background-color: #FF7F50;
+					}
+				}
+			}
+			.icon-twitter-logo {
+					@include media (">=tablet") {
+						&:hover {
+						border: 2px solid #FF7F50;
+						color: $base-color;
+						background-color: #FF7F50;
+					}
+				}
+			}
+		
+			.icon-google-plus {
+
+					@include media (">=tablet") {
+						&:hover {
+						border: 2px solid #FF7F50;
+						color: $base-color;
+						background-color: #FF7F50;
+					}
+				}
+			}
+		}
+	}
+	
+	.team-describe {
+		font-size: 20px;
+		color: #ebebeb;
+		max-width: 630px;
+		margin: 0 auto;
+		line-height: 1.3;
+		text-align: center;
+
+		@include media ('<tablet') {
+			font-size: 14px;
+		}
+	}
+}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~contact~~~~~~~~~~~~~~~~~~~~~~~~
+.wrapper-contact {
+	background-color: #7690c5;
+}
+
+.section-contact {
+	@extend .section-wrapp;
+	border-bottom: 1px solid #87a0d2;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	padding-bottom: 0;
+
+	@include media ('<tablet') {
+		padding: 20px 0;
+	}
+
+	.our-contact {
+		width: 50%;
+		padding-right: 40px;
+
+		@include media ('<tablet') {
+			width: 100%;
+			padding: 0;
+		}
+	}
+
+	.heading-contact {
+		color: $base-color;
+		line-height: 1.4;
+		margin-bottom: 50px;
+
+		@include media ('<tablet') {
+			text-align: center;
+			font-size: 15px;
+			margin-bottom: 20px;
+		}
+
+		h2 {
+			@extend .heading;
+			color: $base-color;
+			margin-bottom: 24px;
+			line-height: 0.8;
+			word-spacing: 15px;
+		}
+	}
+
+	.main-contact-wrapp {
+
+		.contact-list {
+			font-size: 0;
+			line-height: 0;
+
+			@include media ('<tablet') {
+				text-align: center;
+			}
+		}
+
+		.contact-list-item {
+			font-size: 18px;
+			line-height: 1;
+			width: 50%;
+			display: inline-block;
+			vertical-align: top;
+			margin-bottom: 35px;
+
+			@include media ('<tablet') {
+				width: 100%;
+				margin-bottom: 20px;
+				font-size: 15px;
+			}
+
+				&:nth-child(even) {
+				padding-left: 10px;
+			}
+		}
+
+		a {
+			color: $base-color;
+			transition: all .5s ease-in-out;
+			
+			@include media (">=tablet") {
+					&:hover {
+					color: $base-hover-link;
+				}
+			}
+		}
+
+		.ico-hold {
+			vertical-align: middle;
+			display: inline-block;
+			width: 30px;
+			height: 30px;
+			text-align: center;
+			font-size: 30px;
+			margin-right: 7px;
+			color: $base-color;
+		}
+
+		.label-hold {
+			color: $base-color;
+		}
+	}
+
+	.contact-form-hold {
+		width: 50%;
+		padding-left: 15px;
+
+		@include media ('<tablet') {
+			width: 100%;
+			padding: 0;
+		}
+
+		form {
+			max-width: 456px;
+
+			@include media ('<tablet') {
+				max-width: 100%;
+			}
+		}
+
+		.contact-row {
+			margin-bottom: 24px;
+		}
+
+		.input {
+			border-radius: 4px;
+			width: 100%;
+			display: block;
+			border: 1px solid #ccc;
+			padding: 11px 20px 14px;
+			min-height: 50px;
+			color: #bbb;
+
+			@include media ('<tablet') {
+				padding: 10px;
+				min-height: 20px;
+				font-size: 14px;
+			}
+		}
+
+		.textarea {
+			resize: vertical;
+			min-height: 208px;
+
+			@include media ('<phone') {
+				min-height: 90px;
+			}
+		}
+
+		.button {
+			background-color: #fff;
+			text-transform: uppercase;
+			transition: all .3s ease-in-out;
+
+			@include media ('>=tablet') {
+				
+					&:hover {
+					background-color: $base-hover-link;
+					color: #fff;
+					border-color: $base-hover-link;
+					transform: rotateX(360deg);
+				}
+			}
+
+			@include media ("<tablet") {
+				padding: 10px;
+			}
+		}
+	}
+}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~footer~~~~~~~~~~~~~~~~~~~~~~~~
+.footer {
+	.footer-content {
+		text-align: center;
+		font: 500 16px $base-font-BrandonGrotesque;
+		padding: 26px 0;
+		color: $base-color;
+	}
+}
