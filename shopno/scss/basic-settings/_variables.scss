@@ -1,0 +1,50 @@
+//color
+$black:	 				#000;
+$dark-black: 		#262b2e;
+$white:	 				#fff;
+$aqua:   				#71f6eb;
+$aqua-light: 		#6eeee4;
+$yellow: 				#f2da3b;
+$gray-100: 			#f8fafa;
+$gray-200: 			#f9fbfb;
+$gray-300: 			#eeeff1;
+$gray-600: 			#d0d0d0;
+$gray-700: 			#eaebed;
+$gray-800: 			#505050;
+
+$gray:	 				$gray-600;
+$default:       $white;
+$primary:       $black;
+$primary-dark: 	$dark-black;
+$secondary:     $gray;
+$info:          $aqua;
+$warning:       $yellow;
+$light:         $gray-100;
+$dark:          $gray-800;
+
+// Body styles
+$primary-font-Raleway: 'Raleway', 'Arial', sans-serif;
+$secondary-font-Merri: 'Merriweather', $primary-font-Raleway, 'Arial', serif;
+$third-font-Mont: 'Montserrat', $secondary-font-Merri, 'Arial', sans-serif;
+$base-font-weight: 400;
+$base-font-family: $primary-font-Raleway;
+$base-text-color: $primary;
+$base-background-color: $default;
+$base-font-size: 16px;
+$base-line-height: 1.3;
+$base-min-width: 320px;
+
+// Links styles
+$base-link-color: $default;
+$link: $primary;
+$link-hover: $info;
+
+// Buttons styles
+$btn-color: $default;
+$btn-background: $default;
+$btn-padding: 0;
+$btn-font-size: inherit;
+
+// visual bg
+$visual-bg: #eff0f2;
+$section-bg: #f9fbfb;
