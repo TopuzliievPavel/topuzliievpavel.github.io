@@ -34,7 +34,7 @@ function owlCarousel() {
       margin: 10,
       nav: true,
       autoplay: true,
-      autoplayTimeout: 10000,
+      autoplayTimeout: 5000,
       smartSpeed: 800,
       responsive:{
           0:{
